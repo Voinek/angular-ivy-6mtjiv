@@ -1,0 +1,24 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Google</mat-label>
+    <input
+      type="text"
+      placeholder="Search"
+      aria-label="Number"
+      matInput
+      [formControl]="myControl"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option
+        *ngFor="let option of filteredOptions | async"
+        [value]="option"
+      >
+        {{option}}
+        <button (click)="lookFor('https://www.google.com/search?q=' + option)">
+          Search
+        </button>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
